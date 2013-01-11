@@ -12,6 +12,11 @@
 
 @implementation FriendCD
 
+/**
+ * methodName  create
+ * parameter - NSDictionary newFriend
+ * returns - void
+ */
 - (void) create :(NSDictionary *) newFriend{
     CoreDataBase *coreDataBase = [CoreDataBase coreDataBase];
     Friend *friend = (Friend*)[coreDataBase createObjectWithEntityName:kFriend];
@@ -25,16 +30,31 @@
     NSLog(@"Save success");
 }
 
+/*
+ * methodName  getAll
+ * parameter - 
+ * returns - NSMutableArray
+ */
 -(NSMutableArray *) getAll {
     CoreDataBase *coreDataBase = [CoreDataBase coreDataBase];
     NSMutableArray *all = [coreDataBase getObjectsForEntity:kFriend withSortKey:@"name" andSortAscending:NO ];
     return all;
 }
 
+/**
+ * methodName  count
+ * parameter -
+ * returns - NSUInteger
+ */
 - (NSUInteger) count {
     return [[CoreDataBase coreDataBase] countForEntity:kFriend];
 }
 
+/**
+ * methodName  deleteAll
+ * parameter -
+ * returns - BOOL
+ */
 - (BOOL) deleteAll {
     return [[CoreDataBase coreDataBase] deleteAllObjectsForEntity:kFriend];
 }

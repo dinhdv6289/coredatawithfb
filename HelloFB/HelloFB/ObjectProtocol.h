@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol ObjectProtocol <NSObject>
+
 - (void) create : (NSDictionary *) newObject;
 - (NSMutableArray *)getAll;
 - (NSUInteger) count;
