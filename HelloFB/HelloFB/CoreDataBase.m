@@ -10,9 +10,23 @@
 
 @implementation CoreDataBase
 
+/**
+ * methodName  countForEntity
+ * Description
+ * parameter - NSString entityName
+ * returns - NSUInteger
+ */
 - (NSUInteger)countForEntity:(NSString *)entityName {
     return [self countForEntity:entityName withPredicate:nil];
 }
+
+/**
+ * methodName  countForEntity
+ * Description
+ * parameter - NSString entityName
+ * parameter - NSPredicate withPredicate
+ * returns - NSUInteger
+ */
 - (NSUInteger)countForEntity:(NSString *)entityName withPredicate:(NSPredicate *)predicate {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[self managedObjectContext]];
@@ -29,6 +43,13 @@
     return  count;
 }
 
+/**
+ * methodName  createObjectWithEntityName
+ * Description
+ * parameter - NSString entityName
+ * parameter - NSPredicate withPredicate
+ * returns - NSManagedObject
+ */
 - (NSManagedObject *) createObjectWithEntityName : (NSString *) entityName {
     NSLog(@"entityName %@",entityName);
     NSManagedObject *entity = nil;
@@ -78,6 +99,13 @@
 	return [self searchObjectsForEntity:entityName withPredicate:nil andSortKey:sortKey andSortAscending:sortAscending];
 }
 
+/**
+ * methodName  deleteAllObjectsForEntity
+ * Description
+ * parameter - NSString entityName
+ * parameter - NSPredicate withPredicate
+ * returns - BOOL
+ */
 - (BOOL)deleteAllObjectsForEntity:(NSString*)entityName withPredicate:(NSPredicate*)predicate {
     // Create fetch request
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -109,6 +137,13 @@
 	return YES;
 }
 
+/**
+ * methodName  deleteAllObjectsForEntity
+ * Description
+ * parameter - NSString entityName
+ * parameter - description ...
+ * returns - BOOL
+ */
 - (BOOL)deleteAllObjectsForEntity:(NSString*)entityName {
     return [self deleteAllObjectsForEntity:entityName withPredicate:nil];
 }
